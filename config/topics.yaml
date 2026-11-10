@@ -1,0 +1,40 @@
+# News queries run against Google News (free RSS), restricted to the last day.
+# Edit freely: each entry becomes a search. Prefix tags are used only for grouping.
+
+global:
+  - topic: "AI & data centres"
+    query: '("AI bubble" OR "AI capex" OR Nvidia OR OpenAI OR hyperscaler OR "data centre" OR "data center") (stocks OR spending OR demand)'
+  - topic: "Oil & energy"
+    query: '(Brent OR "crude oil" OR OPEC OR LNG OR "natural gas") (price OR supply OR output)'
+  - topic: "Semiconductors & tech supply chain"
+    query: '(semiconductor OR chips OR "export controls" OR TSMC) (tariff OR supply OR demand)'
+  - topic: "Trade policy & tariffs"
+    query: '(tariff OR "trade war" OR "trade deal" OR sanctions) (Malaysia OR ASEAN OR China OR US)'
+  - topic: "Shipping & supply chain"
+    query: '("supply chain" OR shipping OR freight OR "Red Sea" OR "Strait of Hormuz")'
+  - topic: "Global markets & rates"
+    query: '(Fed OR "Treasury yields" OR "US dollar" OR "Wall Street" OR "Asian markets") (stocks OR rate OR inflation)'
+  - topic: "China & consumer demand"
+    query: '(China economy OR "consumer spending" OR "palm oil" OR "rubber gloves") (demand OR price)'
+  - topic: "Malaysia macro"
+    query: '(Malaysia OR ringgit OR Bursa OR BNM) (economy OR exports OR foreign OR fund flows)'
+
+# Malaysian policy items that feed the Calendar section (latest development + next date)
+policy:
+  - topic: "Budget 2027"
+    query: '"Budget 2027" Malaysia (Dewan Rakyat OR committee OR measures OR tax)'
+  - topic: "13th Malaysia Plan"
+    query: '("13th Malaysia Plan" OR RMK13) (project OR allocation OR implementation)'
+  - topic: "Subsidy rationalisation / RON95"
+    query: '(BUDI95 OR "RON95" OR "subsidy rationalisation" OR "diesel subsidy" OR "targeted subsidy") Malaysia'
+  - topic: "Electricity tariff / energy policy"
+    query: '(Malaysia "electricity tariff" OR TNB OR "Energy Commission" OR "data centre" tariff)'
+
+# Company-level news from The Edge Malaysia (and other outlets) to complement Bursa filings.
+company_edge:
+  - '(contract OR "letter of award" OR "wins" OR secures) Bursa'
+  - '(takeover OR "general offer" OR disposal OR privatisation) Bursa'
+  - '("profit warning" OR PN17 OR "GN3" OR "unusual market activity" OR "UMA query") Bursa'
+  - '("substantial shareholder" OR "director" OR "insider") (sells OR buys OR stake) Bursa'
+  - '(results OR earnings OR "quarterly" OR "net profit") Bursa analysts'
+  - '("data centre" OR "data center") Malaysia (stock OR Bursa OR contract OR Johor)'

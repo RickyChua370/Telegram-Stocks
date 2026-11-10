@@ -1,0 +1,9 @@
+# Stocks you personally follow, by Bursa stock code (find codes on klsescreener.com).
+# They always get a technical read and a report-date check, even on days with no news.
+# The bot also adds stocks that appear in the day's news and the market-wide high-volume screen.
+#
+# Example (remove the leading # to enable):
+# watchlist:
+#   - code: "1155"   # Maybank
+#   - code: "5398"   # Gamuda
+watchlist: []

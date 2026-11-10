@@ -1,0 +1,23 @@
+# Government / mega-project tracker (Section 4).
+# `query` goes to Google News; `keywords` match Bursa filings and headlines so contract wins get linked to the project.
+# Add or remove projects freely.
+
+projects:
+  - name: "Data-centre approvals"
+    query: '(Malaysia "data centre" OR "data center") (approved OR approval OR MIDA OR Johor OR "investment")'
+    keywords: ["data centre", "data center", "hyperscale", "MIDA"]
+  - name: "NETR / energy transition"
+    query: '(Malaysia "National Energy Transition Roadmap" OR NETR OR "large scale solar" OR LSS OR CRESS OR "hydrogen" OR "carbon capture" OR "energy storage")'
+    keywords: ["NETR", "large scale solar", "LSS", "CRESS", "hydrogen", "carbon capture", "CCUS", "BESS", "energy storage", "solar"]
+  - name: "East Coast Rail Link (ECRL)"
+    query: '(ECRL OR "East Coast Rail Link")'
+    keywords: ["ECRL", "East Coast Rail"]
+  - name: "MRT3 (Circle Line)"
+    query: '(MRT3 OR "MRT 3" OR "Circle Line" Malaysia)'
+    keywords: ["MRT3", "MRT 3", "Circle Line"]
+  - name: "Other infrastructure awards"
+    query: '(Malaysia ("Pan Borneo" OR "LRT3" OR "RTS Link" OR "Penang LRT" OR "Mutiara Line" OR "Sarawak" OR "Sabah") (contract OR award OR tender OR project))'
+    keywords: ["Pan Borneo", "LRT3", "RTS Link", "Penang LRT", "Mutiara Line", "Sarawak", "Sabah"]
+  - name: "Government contract awards (general)"
+    query: '(Malaysia government contract OR "letter of award" OR tender) (billion OR million) (infrastructure OR construction OR oil OR power)'
+    keywords: ["letter of award", "letter of acceptance", "tender"]

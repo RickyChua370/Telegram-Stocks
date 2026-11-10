@@ -1,0 +1,40 @@
+timezone: Asia/Kuala_Lumpur
+
+lookback_hours:
+  filings: 26        # Bursa filings considered "today's" (digest runs ~7pm MYT)
+  news: 30
+
+limits:
+  global_news_items: 45
+  company_llm_items: 40
+  gov_news_per_project: 5
+  thesis_items: 60
+  key_stocks: 8          # max cards in the Summary Layer
+
+technicals:
+  # Daily candles. Periods below are tuned for swing trading over days to a few weeks.
+  history_period: 1y
+  high_volume_top_n: 30        # market-wide high-volume names screened each day
+  min_price: 0.30              # skip penny stocks below this (RM)
+  min_market_cap_m: 300        # skip micro-caps below this (RM million)
+  ema_fast: 20
+  ema_slow: 50
+  ema_long: 200
+  wma: 20
+  rsi_period: 14
+  rsi_oversold: 30
+  rsi_overbought: 70
+  stoch_k: 14
+  stoch_smooth: 3
+  stoch_d: 3
+  stoch_oversold: 20
+  stoch_overbought: 80
+  bb_period: 20
+  bb_std: 2.0
+  volume_spike_ratio: 2.0
+  cross_lookback_bars: 3
+
+calendar:
+  horizon_days: 21
+  report_window_days: 7        # "reporting in the next N days"
+  report_candidates: 60        # max stocks to estimate report dates for

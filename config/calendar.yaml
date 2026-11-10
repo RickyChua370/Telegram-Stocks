@@ -1,0 +1,150 @@
+# Forward calendar of scheduled catalysts (Section 2).
+#
+# confirmed dates come from the issuer's own published schedule (source given).
+# approx: true  => typical/estimated timing. The bot shows these with a "~" and tells you to verify.
+# Review this file at the start of each quarter; the AI also scans news daily for policy changes.
+#
+# Fields: date (YYYY-MM-DD), end_date (optional), title, category, importance (1-3), note, source, approx
+
+events:
+  # ---- Index events (forced buying/selling by passive funds) ----
+  - date: 2026-11-11
+    title: "MSCI November 2026 Index Review: list of additions/deletions announced"
+    category: Index
+    importance: 3
+    note: "Announced after 11pm CET, so Malaysian investors see it on the morning of 12 Nov. Stocks added to MSCI Malaysia usually attract buying; stocks removed face selling."
+    source: "https://www.msci.com/discover-msci/media-room"
+  - date: 2026-11-30
+    title: "MSCI November review changes take effect at market close"
+    category: Index
+    importance: 3
+    note: "Passive funds tracking MSCI trade at the closing auction, so expect unusual volume and price moves in affected stocks near the close."
+    source: "https://www.msci.com/discover-msci/media-room"
+  - date: 2026-11-23
+    title: "FTSE Russell data cut-off for the FBM KLCI expansion review (expected)"
+    category: Index
+    importance: 2
+    approx: true
+    note: "FBM KLCI is growing from 30 to 50 stocks. Which stocks make the cut is decided on data around this date."
+    source: "https://klse.i3investor.com/web/blog/detail/MplusOnline/2026-08-21-story-h502342048-KLCI_rsquo_s_Biggest_Overhaul_Since_2009_Benchmark_Expands_to_50_Stocks"
+  - date: 2026-12-04
+    title: "FTSE Bursa Malaysia review: the 20 new FBM KLCI constituents announced (expected early Dec)"
+    category: Index
+    importance: 3
+    approx: true
+    note: "Expected early December; past reviews were announced around 4 Dec. Newly added names could see buying ahead of the effective date."
+    source: "https://theedgemalaysia.com/node/815365"
+  - date: 2026-12-21
+    title: "FBM KLCI expands to 50 stocks (phase 1 effective)"
+    category: Index
+    importance: 3
+    note: "20 new constituents enter at 50% of their final weight; the remaining 50% follows at the June 2027 review. Index-tracking funds typically trade at the close of the last trading day before the effective date."
+    source: "https://theedgemalaysia.com/node/815365"
+  - date: 2027-02-09
+    end_date: 2027-03-01
+    title: "MSCI February 2027 Index Review (announce 9 Feb, effective 1 Mar)"
+    category: Index
+    importance: 2
+    source: "https://app2.msci.com/eqb/pressreleases/archive/ir_dates.pdf"
+  - date: 2027-05-10
+    end_date: 2027-05-28
+    title: "MSCI May 2027 Index Review (announce 10 May, effective 28 May)"
+    category: Index
+    importance: 2
+    source: "https://app2.msci.com/eqb/pressreleases/archive/ir_dates.pdf"
+
+  # ---- Central banks ----
+  - date: 2026-12-09
+    end_date: 2026-12-09
+    title: "US Fed (FOMC) interest-rate decision (meeting 8-9 Dec)"
+    category: Fed
+    importance: 3
+    note: "Fed rate path drives the US dollar, foreign fund flows into Malaysia, and the ringgit."
+    source: "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  - date: 2027-01-27
+    title: "US Fed (FOMC) decision (meeting 26-27 Jan)"
+    category: Fed
+    importance: 3
+    source: "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  - date: 2027-03-17
+    title: "US Fed (FOMC) decision (meeting 16-17 Mar)"
+    category: Fed
+    importance: 3
+    source: "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  - date: 2027-04-28
+    title: "US Fed (FOMC) decision (meeting 27-28 Apr)"
+    category: Fed
+    importance: 3
+    source: "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+  - date: 2027-01-21
+    title: "Bank Negara Malaysia (BNM) MPC decision on the OPR (currently 2.75%)"
+    category: BNM
+    importance: 3
+    note: "OPR has been held at 2.75% for eight straight meetings. Banks and property/REIT stocks are the most rate-sensitive."
+    source: "https://www.bnm.gov.my/monetary-stability/mpc-meetings"
+  - date: 2026-11-29
+    title: "OPEC+ 42nd Ministerial Meeting and 69th JMMC (oil output policy for 2027)"
+    category: OPEC+
+    importance: 3
+    note: "Current production levels are agreed only until 31 Dec 2026, so this meeting sets the 2027 direction. Matters for oil price, Petronas-linked and O&G service stocks."
+    source: "https://opec.org/pr-detail/617-4-october-2026.html"
+
+  # ---- Malaysian data ----
+  - date: 2026-11-18
+    title: "DOSM releases full Q3 2026 GDP (advance estimate was +5.3%)"
+    category: DOSM
+    importance: 3
+    note: "Shows which sectors and demand components drove growth; revisions can move sentiment."
+    source: "https://www.kenanga.com.my/wp-content/uploads/2026/10/EV_MY_3Q26_Advance_GDP_261016-Kenanga.pdf"
+
+  # ---- Budget and policy ----
+  - date: 2026-11-02
+    end_date: 2026-11-26
+    title: "Budget 2027 committee-stage debate in Dewan Rakyat (scheduled 2-26 Nov)"
+    category: Policy
+    importance: 2
+    approx: true
+    note: "Third reading, Dewan Negara and royal assent follow. Parliament's calendar shows sittings on 16-19 Nov still allocated to Budget debates; verify exact days."
+    source: "https://theedgemalaysia.com/node/823823"
+  - date: 2026-11-30
+    end_date: 2026-12-08
+    title: "Dewan Rakyat takes up seven government bills (30 Nov - 8 Dec)"
+    category: Policy
+    importance: 1
+    source: "https://www.nst.com.my/news/nation/2026/11/1574019/seven-bills-lined-dewan-rakyat-nov-30"
+
+# Recurring events generated by the bot for the horizon window.
+recurring:
+  - rule: pboc_lpr
+    title: "China PBoC Loan Prime Rate (LPR) fixing"
+    category: PBoC
+    importance: 2
+    note: "Fixed on the 20th of each month (next working day if it falls on a weekend). Signals China's policy stance, which matters for Malaysian exporters and commodities."
+    source: "https://www.pbc.gov.cn/en/3688006/index.html"
+  - rule: weekly
+    weekday: 2            # Wednesday (Mon=0)
+    title: "MOF weekly fuel price announcement (unsubsidised RON95/diesel; BUDI95 stays RM1.99)"
+    category: Policy
+    importance: 1
+    note: "Weekly price-setting for the Thursday to Wednesday period. Watch for any change to the subsidy scheme."
+  - rule: monthly_day
+    day: 11
+    title: "DOSM Industrial Production Index (previous month)"
+    category: DOSM
+    importance: 2
+    approx: true
+    note: "Typical timing around the 10th-12th of each month; verify on dosm.gov.my."
+  - rule: monthly_day
+    day: 18
+    title: "DOSM external trade (exports/imports, previous month)"
+    category: DOSM
+    importance: 2
+    approx: true
+    note: "Typical timing around the 18th-20th of each month; verify on dosm.gov.my."
+  - rule: monthly_day
+    day: 23
+    title: "DOSM Consumer Price Index / inflation (previous month)"
+    category: DOSM
+    importance: 2
+    approx: true
+    note: "Typical timing around the 22nd-24th of each month; verify on dosm.gov.my."

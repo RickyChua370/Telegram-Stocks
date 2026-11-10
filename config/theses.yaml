@@ -1,0 +1,39 @@
+# Your investment theses. Each day the AI scores the day's news against every thesis here:
+# SUPPORTS / WEAKENS / UNCHANGED, with a strongest-counterargument to guard against confirmation bias.
+# Add more theses by copying the block. Keep statements falsifiable.
+
+theses:
+  - id: ai_bubble
+    title: "AI valuations are a bubble that can burst"
+    statement: >
+      AI-linked equities are priced for perfection. Spending on AI infrastructure (data centres, chips,
+      power) is growing faster than the revenue AI actually earns, and part of it is funded by debt and
+      circular deals between the same few companies. If AI spending is cut or a major AI company
+      disappoints, AI leaders could de-rate sharply (30%+), hurting the wider supply chain and, through
+      lost wealth, credit stress and weaker growth, the global economy.
+    time_horizon: "6 to 18 months (the timing is the uncertain part, not the direction)"
+    chain_of_logic:
+      - "1. Valuation and funding stress: stretched valuations, rising debt-funded AI capex, circular financing."
+      - "2. Demand and capex rollover: hyperscalers or AI labs cut, delay or reprice AI spending; AI revenue disappoints."
+      - "3. Contagion: AI-equity sell-off spreads to credit markets, consumer wealth effects and global growth."
+    supports_if:
+      - "Hyperscaler or AI-lab capex cuts, delays, or cautious guidance"
+      - "AI revenue or user growth missing expectations; weak return on AI spending"
+      - "Funding stress: failed or expensive debt raises, AI start-up down-rounds, widening credit spreads"
+      - "Circular deals or off-balance-sheet financing coming under scrutiny"
+      - "Data-centre or power-grid delays, cancelled orders, GPU price or rental collapse"
+      - "Insider selling, stretched valuation warnings from major institutions"
+    weakens_if:
+      - "AI revenue growth clearly outpacing capex growth, with strong profit margins"
+      - "Broad enterprise adoption with measurable productivity gains"
+      - "Hyperscalers raising capex while earnings beat and guidance rises"
+      - "Orders and backlogs rising across chips, servers, power and data-centre supply chain"
+      - "Healthy funding conditions with AI firms raising money on reasonable terms"
+    malaysia_channels:
+      - "Johor and Klang Valley data-centre build-out (builders, M&E, cooling, power, land, REITs)"
+      - "Semiconductor back-end and test in Penang/Kulim, and electronics manufacturing services"
+      - "Power and utilities (electricity demand from data centres), plus water"
+      - "Malaysian exports, the ringgit, and foreign fund flows into Bursa tech names"
+    what_would_change_my_mind:
+      - "Two or more consecutive quarters of AI revenue growth exceeding capex growth"
+      - "Hyperscalers raising capex guidance while free cash flow stays healthy"

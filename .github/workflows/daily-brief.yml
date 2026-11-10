@@ -1,0 +1,94 @@
+name: Daily Bursa Brief
+
+on:
+  schedule:
+    # 11:00 UTC = 19:00 Malaysia time (UTC+8), Monday-Friday, after Bursa closes at 17:00.
+    # GitHub may delay scheduled runs by 5-30 minutes at busy times; that still lands inside 6-9pm MYT.
+    - cron: "0 11 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (build the digest and print it in the log; do not send to Telegram)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # only used to save run state to the 'bot-state' branch
+
+concurrency:
+  group: daily-brief
+  cancel-in-progress: false
+
+jobs:
+  brief:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # State (items already shown, thesis score history, cached report dates) lives on a separate branch
+      # so it never clutters your main history.
+      - name: Restore state
+        run: |
+          mkdir -p state
+          if git ls-remote --exit-code --heads origin bot-state >/dev/null 2>&1; then
+            git fetch --depth=1 origin bot-state
+            git show FETCH_HEAD:state.json > state/state.json || rm -f state/state.json
+          fi
+
+      - name: Build and send the digest
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_MODEL_FAST: ${{ vars.GEMINI_MODEL_FAST }}
+          GEMINI_MODEL_SMART: ${{ vars.GEMINI_MODEL_SMART }}
+          GROQ_MODEL: ${{ vars.GROQ_MODEL }}
+          STATE_PATH: state/state.json
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            python -m stockbot -v run --dry-run
+          else
+            python -m stockbot -v run
+          fi
+
+      - name: Save state
+        if: success() && inputs.dry_run != true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          test -f state/state.json || exit 0
+          tmp="$(mktemp -d)"
+          cp state/state.json "$tmp/state.json"
+          cd "$tmp"
+          git init -q -b bot-state
+          git config user.name "stockbot"
+          git config user.email "stockbot@users.noreply.github.com"
+          git add state.json
+          git commit -q -m "state $(date -u +%F)"
+          git push -q --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" bot-state
+
+      # If the run itself crashes, tell the user instead of failing silently.
+      - name: Notify on failure
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+            curl -s -o /dev/null -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              -d chat_id="${TELEGRAM_CHAT_ID}" \
+              --data-urlencode "text=⚠️ Daily Bursa Brief failed to run today. Check the GitHub Actions log: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          fi
